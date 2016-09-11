@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="helloMvc">
+    <output-path>$PROJECT_DIR$/ch4/out/artifacts/helloMvc</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ch4" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
