@@ -29,6 +29,7 @@
         <module name="ch5" />
         <module name="ch7" />
         <module name="ch8" />
+        <module name="ch9_spring_batch" />
         <module name="ch9_spring_security" />
       </profile>
     </annotationProcessing>
@@ -40,6 +41,7 @@
       <module name="ch5" target="1.8" />
       <module name="ch7" target="1.8" />
       <module name="ch8" target="1.8" />
+      <module name="ch9_spring_batch" target="1.8" />
       <module name="ch9_spring_security" target="1.8" />
       <module name="spring-boot-learning" target="1.8" />
     </bytecodeTargetLevel>

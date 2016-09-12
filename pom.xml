@@ -23,6 +23,7 @@
         <module>ch7</module>
         <module>ch8</module>
         <module>ch9_spring_security</module>
+        <module>ch9_spring_batch</module>
     </modules>
 
     <properties>
@@ -192,6 +193,12 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.16.10</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.2.4.Final</version>
             </dependency>
 
         </dependencies>
