@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/ch9_activemq/ch9_activemq.iml" filepath="$PROJECT_DIR$/ch9_activemq/ch9_activemq.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch9_rabbitmq/ch9_rabbitmq.iml" filepath="$PROJECT_DIR$/ch9_rabbitmq/ch9_rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch9_spring_batch/ch9_spring_batch.iml" filepath="$PROJECT_DIR$/ch9_spring_batch/ch9_spring_batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch9_spring_integration/ch9_spring_integration.iml" filepath="$PROJECT_DIR$/ch9_spring_integration/ch9_spring_integration.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch9_spring_security/ch9_spring_security.iml" filepath="$PROJECT_DIR$/ch9_spring_security/ch9_spring_security.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-learning.iml" filepath="$PROJECT_DIR$/spring-boot-learning.iml" />
     </modules>

@@ -32,6 +32,7 @@
         <module name="ch9_activemq" />
         <module name="ch9_rabbitmq" />
         <module name="ch9_spring_batch" />
+        <module name="ch9_spring_integration" />
         <module name="ch9_spring_security" />
       </profile>
     </annotationProcessing>
@@ -46,6 +47,7 @@
       <module name="ch9_activemq" target="1.8" />
       <module name="ch9_rabbitmq" target="1.8" />
       <module name="ch9_spring_batch" target="1.8" />
+      <module name="ch9_spring_integration" target="1.8" />
       <module name="ch9_spring_security" target="1.8" />
       <module name="spring-boot-learning" target="1.8" />
     </bytecodeTargetLevel>
