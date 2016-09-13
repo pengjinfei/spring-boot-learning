@@ -24,6 +24,8 @@
         <module>ch8</module>
         <module>ch9_spring_security</module>
         <module>ch9_spring_batch</module>
+        <module>ch9_activemq</module>
+        <module>ch9_rabbitmq</module>
     </modules>
 
     <properties>
@@ -199,6 +201,18 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>5.2.4.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-client</artifactId>
+                <version>5.13.4</version>
             </dependency>
 
         </dependencies>

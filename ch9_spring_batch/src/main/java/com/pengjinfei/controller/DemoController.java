@@ -30,7 +30,7 @@ public class DemoController {
                 .addLong("time", System.currentTimeMillis())
                 .addString("input.file.name",path)
                 .toJobParameters();
-        jobLauncher.run(importJob,jobParameters);
+    jobLauncher.run(importJob,jobParameters);
         return "OK";
     }
 }
