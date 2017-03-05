@@ -1,6 +1,7 @@
 package com.pengjinfei.batch;
 
 import com.pengjinfei.domain.Person;
+import org.apache.poi.ss.usermodel.Row;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
@@ -12,9 +13,7 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
-import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.*;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -22,11 +21,12 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.validator.Validator;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -78,7 +78,6 @@ public class CsvBatchConfig {
                 setTargetType(Person.class);
             }});
         }});
-
         return reader;
     }
 
@@ -97,6 +96,25 @@ public class CsvBatchConfig {
         writer.setSql(sql);
         writer.setDataSource(dataSource);
         return writer;
+    }
+
+    @Bean(destroyMethod="")
+    @StepScope
+    public ItemStreamWriter<Person> excelWriter(@Value("#{jobParameters['excel.name']}") String excelName) {
+       ExcelItemWriter<Person> itemWriter=new ExcelItemWriter<>();
+       itemWriter.setRowMapper(new ExcelRowMapper<Person>() {
+           @Override
+           public void rowMapper(Person item, Row row) {
+               row.createCell(0).setCellValue(item.getAddress());
+               row.createCell(1).setCellValue(item.getAge());
+               row.createCell(2).setCellValue(item.getName());
+               row.createCell(3).setCellValue(item.getNation());
+           }
+       });
+       itemWriter.setHeaders(new String[]{"地址","年龄","姓名","籍贯"});
+       itemWriter.setResource(new FileSystemResource("/Users/Pengjinfei/Documents/temp/"+excelName+".xlsx"));
+       itemWriter.setSaveState(false);
+       return itemWriter;
     }
 
     @Bean
@@ -126,7 +144,7 @@ public class CsvBatchConfig {
     }
 
     @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer, ItemProcessor<Person, Person> processor) {
+    public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, @Qualifier("excelWriter") ItemWriter<Person> writer, ItemProcessor<Person, Person> processor) {
         return stepBuilderFactory.get("step1")
                 .<Person, Person>chunk(65000)
                 .reader(reader)
