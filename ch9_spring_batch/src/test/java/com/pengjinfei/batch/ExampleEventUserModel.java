@@ -115,8 +115,8 @@ public class ExampleEventUserModel {
 
     public static void main(String[] args) throws Exception {
         ExampleEventUserModel example = new ExampleEventUserModel();
-        example.processOneSheet(args[0]);
-        example.processAllSheets(args[0]);
+        example.processAllSheets("/Users/Pengjinfei/Documents/temp/5.xlsx");
+        //example.processAllSheets(args[0]);
     }
 }
 
