@@ -2,7 +2,6 @@ package com.pengjinfei.ch7.thymeleaf;
 
 import com.pengjinfei.ch7.websocket.WebSecurityConfig;
 import com.pengjinfei.ch7.websocket.WebSocketConfig;
-import com.pengjinfei.ch7.websocket.WsApplication;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +19,7 @@ import java.util.List;
  */
 @SpringBootApplication
 @Controller
-@ImportAutoConfiguration({WebMvcConfig.class, WebSecurityConfig.class, WebSocketConfig.class, WsApplication.class})
+@ImportAutoConfiguration({WebMvcConfig.class, WebSecurityConfig.class, WebSocketConfig.class})
 public class ThymeleafApplication {
 
     @RequestMapping("/")

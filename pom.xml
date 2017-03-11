@@ -27,6 +27,7 @@
         <module>ch9_activemq</module>
         <module>ch9_rabbitmq</module>
         <module>ch9_spring_integration</module>
+        <module>mybatis</module>
     </modules>
 
     <properties>
@@ -277,6 +278,23 @@
                 <version>2.11.0</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.miemiedev</groupId>
+                <artifactId>mybatis-paginator</artifactId>
+                <version>1.2.15</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
