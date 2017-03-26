@@ -1,9 +1,12 @@
 package com.pengjinfei.mybatis.domain;
 
+import javax.persistence.Table;
+
 /**
  * Created by Pengjinfei on 2017/3/11.
  * Description:
  */
+@Table(name = "batch_job_instance")
 public class JobInstance {
 
     private Integer jobInstanceId;

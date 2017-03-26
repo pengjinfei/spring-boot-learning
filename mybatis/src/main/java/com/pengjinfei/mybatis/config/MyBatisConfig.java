@@ -1,10 +1,11 @@
 package com.pengjinfei.mybatis.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageInterceptor;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -13,8 +14,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Created by Pengjinfei on 2017/3/11.
@@ -46,6 +49,19 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource());
         bean.setTypeAliasesPackage("com.pengjinfei.mybatis.domain");
+
+/*        helperDialect=mysql
+        reasonable=true
+        supportMethodsArguments=true
+        params=count=countSql
+        autoRuntimeDialect=true*/
+        Properties properties = new Properties();
+        properties.setProperty("helperDialect", "oracle");
+        properties.setProperty("reasonable", "true");
+        PageInterceptor interceptor = new PageInterceptor();
+        interceptor.setProperties(properties);
+
+        bean.setPlugins(new Interceptor[]{interceptor});
 
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
