@@ -20,6 +20,7 @@
         <module name="ch9_spring_integration" />
         <module name="ch9_spring_security" />
         <module name="mybatis" />
+        <module name="validator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -37,6 +38,7 @@
       <module name="ch9_spring_security" target="1.8" />
       <module name="mybatis" target="1.8" />
       <module name="spring-boot-learning" target="1.8" />
+      <module name="validator" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

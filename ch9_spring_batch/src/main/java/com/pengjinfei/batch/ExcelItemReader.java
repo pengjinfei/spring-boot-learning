@@ -1,6 +1,5 @@
 package com.pengjinfei.batch;
 
-import lombok.Setter;
 import org.springframework.batch.item.file.ResourceAwareItemReaderItemStream;
 import org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader;
 import org.springframework.beans.factory.InitializingBean;
@@ -13,11 +12,10 @@ import org.springframework.core.io.Resource;
 public class ExcelItemReader<T> extends AbstractItemCountingItemStreamItemReader<T> implements
         ResourceAwareItemReaderItemStream<T>, InitializingBean {
 
-    @Setter
     private Resource resource;
     @Override
     public void setResource(Resource resource) {
-
+        this.resource=resource;
     }
 
     @Override
