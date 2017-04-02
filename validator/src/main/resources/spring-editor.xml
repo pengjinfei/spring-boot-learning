@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.pengjinfei.validator.domain.DepondsOnStudent" id="depondsOnStudent">
+        <property name="student" value="1_hello"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="com.pengjinfei.validator.domain.Student"
+                       value="com.pengjinfei.validator.editor.StudentEditor"/>
+            </map>
+        </property>
+    </bean>
+</beans>
