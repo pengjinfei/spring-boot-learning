@@ -15,13 +15,15 @@ public class ValidatorConfigTest {
     @Test
     public void testSpringValidator() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ValidatorConfig.class);
-        PersonService bean = context.getBean(PersonService.class);
+        PersonService personService = context.getBean(PersonService.class);
         DepondsOnPerson depondsOnPerson = new DepondsOnPerson();
         Person person = new Person();
-        person.setAge(6);
+        person.setAge(5);
         person.setName("hello1");
         depondsOnPerson.setPerson(person);
-        boolean validate = bean.validate(depondsOnPerson);
+        boolean validate = personService.validateBySpring(depondsOnPerson);
         System.out.println(validate);
+        boolean b = personService.validate(depondsOnPerson);
+        System.out.println(b);
     }
 }
