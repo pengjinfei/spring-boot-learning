@@ -6,6 +6,8 @@ import com.pengjinfei.validator.service.PersonService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created by Pengjinfei on 2017/4/3.
  * Description:
@@ -25,5 +27,22 @@ public class ValidatorConfigTest {
         System.out.println(validate);
         boolean b = personService.validate(depondsOnPerson);
         System.out.println(b);
+    }
+
+    @Test
+    public void testHibernate() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+/*        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+        Person person=new Person();
+        person.setName("abcd");
+        person.setAge(1);
+        Set<ConstraintViolation<Person>> set = validator.validate(person, Default.class);
+        for (ConstraintViolation<Person> personConstraintViolation : set) {
+            String message = personConstraintViolation.getMessage();
+            System.out.println(message);
+        }
+        BeanWrapperImpl beanWrapper = new BeanWrapperImpl(person);
+        Map<String, String> describe = BeanUtils.describe(person);
+        System.out.println(describe);*/
     }
 }

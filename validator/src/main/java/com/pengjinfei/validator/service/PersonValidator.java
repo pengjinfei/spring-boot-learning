@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.Validator;
 
 /**
  * Created by Pengjinfei on 2017/4/3.
@@ -14,6 +15,9 @@ public class PersonValidator implements ConstraintValidator<PersonConstraint,Per
 
     @Autowired
     SpringService springService;
+
+    @Autowired
+    Validator validator;
 
     @Override
     public void initialize(PersonConstraint constraintAnnotation) {

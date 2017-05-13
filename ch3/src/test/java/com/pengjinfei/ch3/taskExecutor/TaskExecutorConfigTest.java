@@ -10,13 +10,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class TaskExecutorConfigTest {
 
     @Test
-    public void testAsync() {
+    public void testAsync() throws InterruptedException {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TaskExecutorConfig.class);
         AsyncTaskService taskService = context.getBean(AsyncTaskService.class);
         for (int i = 0; i < 10; i++) {
             taskService.executeAsyncTask(i);
             taskService.executeAsyncTaskPlus(i);
         }
+        Thread.sleep(100000);
 //        context.close();
     }
 

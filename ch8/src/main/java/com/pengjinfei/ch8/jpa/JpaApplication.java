@@ -7,7 +7,6 @@ import com.pengjinfei.ch8.jpa.support.CustomRepositoryFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +26,7 @@ import java.util.List;
 @RestController
 @EnableJpaRepositories(repositoryFactoryBeanClass = CustomRepositoryFactoryBean.class)
 @Import(RepositoryRestMvcConfiguration.class)
-@EnableCaching
+//@EnableCaching
 public class JpaApplication {
 
     public static void main(String[] args) {
