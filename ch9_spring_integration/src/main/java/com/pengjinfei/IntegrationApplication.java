@@ -11,7 +11,6 @@ import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.channel.MessageChannels;
 import org.springframework.integration.dsl.core.Pollers;
 import org.springframework.integration.dsl.file.Files;
-import org.springframework.integration.dsl.mail.Mail;
 import org.springframework.integration.feed.inbound.FeedEntryMessageSource;
 import org.springframework.integration.file.support.FileExistsMode;
 import org.springframework.integration.scheduling.PollerMetadata;
@@ -29,7 +28,7 @@ import static java.lang.System.getProperty;
 public class IntegrationApplication {
 
 
-    @Value("https://spring.io/blog.atom")
+    @Value("http://spring.io/blog.atom")
     Resource resource;
 
     public static void main(String[] args) {
@@ -38,7 +37,7 @@ public class IntegrationApplication {
 
     @Bean(name = PollerMetadata.DEFAULT_POLLER)
     public PollerMetadata poller() { // 2
-        return Pollers.fixedRate(500).get();
+        return Pollers.fixedRate(5000).get();
     }
 
     @Bean
@@ -83,12 +82,12 @@ public class IntegrationApplication {
                 .get();
     }
 
-    @Bean
+/*    @Bean
     public IntegrationFlow newsFlow() {
         return IntegrationFlows.from(MessageChannels.queue("newsChannel", 10))
                 .<SyndEntry, String>transform(
                         payload -> "《" + payload.getTitle() + "》 " + payload.getLink() + getProperty("line.separator"))
-                .enrichHeaders( //1
+                .enrichHeaders( //
                         Mail.headers()
                                 .subject("来自Spring的新闻")
                                 .to("wisely-man@126.com")
@@ -99,5 +98,5 @@ public class IntegrationApplication {
                         .credentials("wisely-man@126.com", "******")
                         .javaMailProperties(p -> p.put("mail.debug", "false")), e -> e.id("smtpOut"))
                 .get();
-    }
+    }*/
 }

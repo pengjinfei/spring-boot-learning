@@ -29,6 +29,7 @@
         <module>ch9_spring_integration</module>
         <module>mybatis</module>
         <module>validator</module>
+        <module>redis</module>
     </modules>
 
     <properties>
