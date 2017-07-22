@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +24,10 @@ public class ConfigApplication {
         return "author name is: "+authorSettings.getName()+", author age is:"+authorSettings.getAge();
     }
 
-    @PostMapping("/test")
-    public String test(String param) {
-        return param;
+    @GetMapping("/test")
+    public String test() throws InterruptedException {
+        Thread.sleep(1000*1000);
+        return "finally";
     }
 
     public static void main(String[] args) {

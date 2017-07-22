@@ -1,14 +1,17 @@
 package com.pengjinfei.mybatis.domain;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Pengjinfei on 2017/3/11.
  * Description:
  */
 @Table(name = "batch_job_instance")
+@Entity
 public class JobInstance {
 
+    @Id
+    @SequenceGenerator(name ="jobInstanceId",sequenceName = "batch_job_seq")
     private Integer jobInstanceId;
 
     private Integer version;

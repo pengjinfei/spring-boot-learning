@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+  		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
+
+	<bean id="reader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="resource">
+            <bean class="org.springframework.core.io.ClassPathResource">
+                <constructor-arg index="0" value="#{jobParameters['input.file.name']}"/>
+            </bean>
+        </property>
+        <property name="lineMapper" ref="lineMapper"/>
+	</bean>
+
+    <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer" id="tokenizer">
+        <property name="names" value="name,age,nation,address"/>
+    </bean>
+
+    <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper" id="lineMapper">
+        <property name="lineTokenizer" ref="tokenizer"/>
+        <property name="fieldSetMapper">
+            <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                <property name="prototypeBeanName" value="person"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="person" class="com.pengjinfei.domain.Person" scope="prototype"/>
+</beans>

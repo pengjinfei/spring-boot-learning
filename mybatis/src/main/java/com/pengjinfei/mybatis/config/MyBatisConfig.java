@@ -3,6 +3,7 @@ package com.pengjinfei.mybatis.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -44,8 +45,8 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         return new DataSourceTransactionManager(dataSource());
     }
 
-    @Bean(name = "sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactoryBean() {
+    @Bean//(name = "sqlSessionFactory")
+    public SqlSessionFactory sqlSessionFactory() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource());
         bean.setTypeAliasesPackage("com.pengjinfei.mybatis.domain");
@@ -85,6 +86,11 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
+    }
+
+    @Bean
+    public SqlSessionTemplate batchSqlSession(SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory, ExecutorType.BATCH);
     }
 
 }

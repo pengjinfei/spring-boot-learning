@@ -39,11 +39,11 @@
 		<property name="corePoolSize" value="10"/>
 	</bean>
 
-	<int:publish-subscribe-channel id="helloWorldChannel"  task-executor="executor">
+	<int:publish-subscribe-channel id="helloWorldChannel"  task-executor="executor" >
 
 	</int:publish-subscribe-channel>
 
-	<int:service-activator input-channel="helloWorldChannel"  ref="helloServiceImpl" method="sayHello"/>
+	<int:service-activator input-channel="helloWorldChannel"  ref="helloServiceImpl" method="sayHello" />
 
 	<int:service-activator input-channel="helloWorldChannel"  ref="helloServiceImpl2" method="sayHello"/>
 

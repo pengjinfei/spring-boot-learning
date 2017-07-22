@@ -5,10 +5,12 @@ import com.pengjinfei.mybatis.domain.JobInstance;
 import com.pengjinfei.mybatis.mapper.BatchJobExecutionMapper;
 import com.pengjinfei.mybatis.service.JobBaseService;
 import com.pengjinfei.mybatis.service.JobInstanceService;
+import com.pengjinfei.mybatis.service.WrapperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -25,6 +27,9 @@ public class JobController {
 
     @Autowired
     JobBaseService jobBaseService;
+
+    @Autowired
+    WrapperService wrapperService;
 
     @RequestMapping(value = "/job/{str}")
     public JobInstance demoPathVar(@PathVariable("str") String str, HttpServletRequest request) {
@@ -46,5 +51,20 @@ public class JobController {
     {
         List<JobInstance> jobInstances = jobInstanceService.selectByPage(page, rows);
         return  new PageInfo<>(jobInstances);
+    }
+
+    @GetMapping("/insert")
+    public String batchInsert() {
+        List<JobInstance> jobInstances = new LinkedList<>();
+        for (int i = 0; i < 10000; i++) {
+            JobInstance jobInstance=new JobInstance();
+            jobInstance.setVersion(i);
+            jobInstance.setJobKey("goodbye4");
+            jobInstance.setJobName(String.valueOf(i));
+            jobInstances.add(jobInstance);
+        }
+        //jobInstanceService.batchInsert(jobInstances);
+        wrapperService.batchInsert(jobInstances);
+        return "good";
     }
 }

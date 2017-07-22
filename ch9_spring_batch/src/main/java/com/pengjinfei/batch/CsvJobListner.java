@@ -15,7 +15,6 @@ public class CsvJobListner implements JobExecutionListener {
 
     private long startTime;
     private long endTime;
-
     @Override
     public void beforeJob(JobExecution jobExecution) {
         startTime= System.currentTimeMillis();

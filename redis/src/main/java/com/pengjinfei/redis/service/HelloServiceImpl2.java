@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 public class HelloServiceImpl2 implements HelloService {
     @Override
     public void sayHello(String name) {
-        try {
-            Thread.sleep(5000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(name + ",hello!");
+        System.out.println(name + "good");;
+        System.out.println("good" + name);
+
+        System.out.println("good" + name);
+        System.out.println("good" + name);
+        System.out.println("i'am good at study");
     }
 }
