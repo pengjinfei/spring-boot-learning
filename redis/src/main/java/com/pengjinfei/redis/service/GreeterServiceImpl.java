@@ -1,19 +1,17 @@
 package com.pengjinfei.redis.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by Pengjinfei on 5/21/17.
  * Description:
  */
-@Service
+//@Service
 public class GreeterServiceImpl implements GreeterService {
 
-    @Autowired
-    MessageChannel helloWorldChannel;
+    //@Autowired
+    private MessageChannel helloWorldChannel;
 
     @Override
     public void greeting(String name) {
