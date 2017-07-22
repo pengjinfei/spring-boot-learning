@@ -6,7 +6,7 @@ import org.springframework.integration.annotation.MessagingGateway;
  * Created by Pengjinfei on 5/21/17.
  * Description:
  */
-@MessagingGateway(name = "entryGateway", defaultRequestChannel = "helloWorldChannel")
+@MessagingGateway(name = "entryGateway", defaultRequestChannel = "queueChannel")
 public interface GreeterService {
     void greeting(String name);
 }

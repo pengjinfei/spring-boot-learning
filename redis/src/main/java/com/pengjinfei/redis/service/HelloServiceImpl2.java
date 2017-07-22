@@ -10,13 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class HelloServiceImpl2 implements HelloService {
     @Override
-    @ServiceActivator(inputChannel = "helloWorldChannel")
+    @ServiceActivator(inputChannel = "queueChannel")
     public void sayHello(String name) {
         System.out.println(name + "good");;
-        System.out.println("good" + name);
-
-        System.out.println("good" + name);
-        System.out.println("good" + name);
-        System.out.println("i'am good at study");
     }
 }
