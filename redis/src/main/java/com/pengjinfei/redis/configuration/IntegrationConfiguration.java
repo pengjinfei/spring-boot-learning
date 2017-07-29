@@ -29,7 +29,9 @@ public class IntegrationConfiguration {
     @Bean
     public TaskExecutor executor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(10);
+        executor.setCorePoolSize(20);
+        executor.setQueueCapacity(20);
+        executor.setMaxPoolSize(30);
         return executor;
     }
 
@@ -41,8 +43,8 @@ public class IntegrationConfiguration {
         return new QueueChannel(queue);
     }
 
-    @Bean(name = PollerMetadata.DEFAULT_POLLER)
+    @Bean
     public PollerMetadata poller() {
-        return Pollers.fixedRate(30000).get();
+        return Pollers.fixedRate(1000).taskExecutor(executor()).maxMessagesPerPoll(10).get();
     }
 }
