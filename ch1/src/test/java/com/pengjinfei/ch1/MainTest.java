@@ -40,5 +40,17 @@ public class MainTest {
         context.close();
     }
 
+    @Test
+    public void testLahua() throws Exception{
+        String cin = "123";
+        switch(cin){
+            case "123":
+                System.out.println("123");
+                break;
+            default:
+                System.out.println("abd");
+                break;
+        }
+    }
 
 }

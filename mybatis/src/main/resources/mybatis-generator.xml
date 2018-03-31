@@ -39,6 +39,7 @@
 
         <!-- !!!! Table Configurations !!!! -->
         <table tableName="BATCH_JOB_EXECUTION" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+               enableUpdateByExample="false">
+        </table>
     </context>
 </generatorConfiguration>

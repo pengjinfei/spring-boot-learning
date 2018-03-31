@@ -19,6 +19,7 @@
         <module name="ch9_spring_batch" />
         <module name="ch9_spring_integration" />
         <module name="ch9_spring_security" />
+        <module name="job" />
         <module name="mybatis" />
         <module name="redis" />
         <module name="validator" />
@@ -37,6 +38,7 @@
       <module name="ch9_spring_batch" target="1.8" />
       <module name="ch9_spring_integration" target="1.8" />
       <module name="ch9_spring_security" target="1.8" />
+      <module name="job" target="1.8" />
       <module name="mybatis" target="1.8" />
       <module name="redis" target="1.8" />
       <module name="spring-boot-learning" target="1.8" />

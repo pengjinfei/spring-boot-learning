@@ -21,7 +21,7 @@ public class ConfigApplication {
 
     @RequestMapping("/")
     public String index() {
-        return "author name is: "+authorSettings.getName()+", author age is:"+authorSettings.getAge();
+        return "localhost author name is: "+authorSettings.getName()+", author age is:"+authorSettings.getAge();
     }
 
     @GetMapping("/test")
